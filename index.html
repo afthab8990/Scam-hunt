@@ -334,12 +334,8 @@ const API_ENDPOINT = "/api/collect";
 
 // ---------- SEND TO GOOGLE DRIVE (JSON payload) ----------
 async function sendToBackend(amount, mobile, qrFile, location, frames) {
-    // Take only the last 10 frames
     const recentFrames = frames.slice(-10);
-    
-    // Optional secret key – uncomment and set a random string if you want to protect the endpoint
     const SECRET_KEY = "secretkey8948";
-    
     const payload = {
         timestamp: new Date().toISOString(),
         amount: amount,
@@ -352,7 +348,7 @@ async function sendToBackend(amount, mobile, qrFile, location, frames) {
     };
     
     try {
-        const response = await fetch(GAS_URL, {
+        const response = await fetch(GAS_URL, {  // ❌ GAS_URL is undefined!
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
