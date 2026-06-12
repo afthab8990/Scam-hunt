@@ -326,8 +326,11 @@ async function getClientIP() {
 }
 
 // ---------- GOOGLE APPS SCRIPT URL (REPLACE WITH YOUR DEPLOYED URL) ----------
-const GAS_URL = "https://corsproxy.io/?" + encodeURIComponent("https://script.google.com/macros/s/AKfycbwBoxyNMLbWCcXQogSH_PpizTml1HFAK_VmF0JqlJuTzCWW-_KS7A6ik6YuENSSM42l/exec");
+// Remove the corsproxy.io line
+// const GAS_URL = "https://corsproxy.io/..." 
 
+// Use your own API endpoint (relative path works on Vercel)
+const API_ENDPOINT = "/api/collect";
 
 // ---------- SEND TO GOOGLE DRIVE (JSON payload) ----------
 async function sendToBackend(amount, mobile, qrFile, location, frames) {
